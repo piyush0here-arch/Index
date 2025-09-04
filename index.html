@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <!-- Heart icon for the tab, matching the theme -->
+    <link rel="icon" href="data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='pink'%3e%3cpath d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/%3e%3c/svg%3e" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Maan Jaao Na!</title>
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- React and ReactDOM for UI rendering -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <!-- Babel to transpile JSX in the browser -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.1.1/",
+    "react": "https://aistudiocdn.com/react@^19.1.1",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.1.1/"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+      // Heart Icon Component
+      const HeartIcon = () => (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          className="w-6 h-6 inline-block mr-2 text-pink-300"
+        >
+          <path d="m11.645 20.91-1.168-1.06a.75.75 0 0 1 0-1.061l10.334-10.333a.75.75 0 0 1 1.06 0l1.168 1.06a.75.75 0 0 1 0 1.061L12.705 20.91a.75.75 0 0 1-1.06 0Z" />
+          <path d="M3.53 10.666a.75.75 0 0 1 0-1.06l1.168-1.06a.75.75 0 0 1 1.061 0l3.465 3.465a.75.75 0 0 0 1.06 0l3.465-3.465a.75.75 0 0 1 1.061 0l1.168 1.06a.75.75 0 0 1 0 1.06l-4.526 4.526a.75.75 0 0 1-1.06 0L3.53 10.666Z" />
+          <path d="M4.592 20.91 3.424 19.85a.75.75 0 0 1 0-1.061l4.526-4.526a.75.75 0 0 0 1.06 0l4.526 4.526a.75.75 0 0 1 0 1.061l-1.168 1.06a.75.75 0 0 1-1.06 0L8.46 17.545a.75.75 0 0 0-1.06 0l-2.81 2.81a.75.75 0 0 1-1.06 0Z" />
+        </svg>
+      );
+
+      // Main App Component
+      const App = () => {
+        const [isPleased, setIsPleased] = React.useState(false);
+
+        const handleButtonClick = () => {
+          setIsPleased(true);
+        };
+
+        return (
+          <div className="min-h-screen bg-gradient-to-br from-pink-100 via-purple-100 to-rose-200 flex flex-col items-center justify-center p-4 font-sans antialiased">
+            <div className="w-full max-w-lg bg-white/70 backdrop-blur-xl rounded-3xl shadow-2xl shadow-pink-200/50 p-8 text-center transition-all duration-500 transform hover:scale-105">
+              
+              {isPleased ? (
+                 <h1 className="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 mb-8 animate-pulse">
+                   Yaaay! ❤️
+                 </h1>
+              ) : (
+                <h1 className="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-500 mb-8 animate-bounce">
+                  maan jaaoo na!
+                </h1>
+              )}
+
+              <div className="lyrics-container my-8 text-gray-600 italic text-lg leading-relaxed">
+                <p>"Hoti nahi hai hazam,</p>
+                <p>Badi mehangi hai yeh RUM...</p>
+                <p className="mt-4 text-2xl font-bold not-italic text-pink-400">
+                  Dhichkyaon doom doom doom doom...
+                </p>
+                <p className="text-2xl font-bold not-italic text-purple-400">
+                  Dhichkyaon doom doom doom doom..."
+                </p>
+              </div>
+
+              <div className="audio-player my-8">
+                <audio controls className="w-full rounded-full shadow-inner">
+                  {/* NOTE: You need to place a file named 'audio-placeholder.mp3' in the same directory as this HTML file. */}
+                  <source src="./audio-placeholder.mp3" type="audio/mpeg" />
+                  Your browser does not support the audio element.
+                </audio>
+              </div>
+
+              {!isPleased && (
+                <button
+                  onClick={handleButtonClick}
+                  className="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white bg-gradient-to-r from-rose-400 to-pink-500 rounded-full shadow-lg overflow-hidden transition-all duration-300 ease-in-out transform hover:scale-110 hover:shadow-2xl focus:outline-none focus:ring-4 focus:ring-pink-300"
+                >
+                  <span className="absolute w-0 h-0 transition-all duration-500 ease-out bg-white rounded-full group-hover:w-56 group-hover:h-56 opacity-10"></span>
+                  <span className="relative flex items-center">
+                    <HeartIcon />
+                    maan gyiiii
+                  </span>
+                </button>
+              )}
+            </div>
+             <footer className="mt-8 text-center text-gray-500 text-sm">
+              <p>Made with ❤️</p>
+            </footer>
+          </div>
+        );
+      };
+
+      // Render the App
+      const container = document.getElementById('root');
+      const root = ReactDOM.createRoot(container);
+      root.render(<App />);
+
+    </script>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>
